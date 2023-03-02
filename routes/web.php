@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\LelangController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\usercontroller;
+use App\Http\Controllers\Historiecontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +23,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::resource('lelang', LelangController::class);
+
+route::resource('barang', BarangController::class);
+
+route::resource('user', usercontroller::class);
+
+route::resource('historie', historiecontroller::class);
+
+// route login
+route::get('login', [LoginController::class, 'view'])->name('login')->middleware('guest');
+route::post('login', [LoginController::class, 'proses'])->name('login.proses')->middleware('guest');
+route::get('logout', [LoginController::class, 'logout'])->name('logout-petugas');
+
+// route register
+route::get('register', [RegisterController::class, 'view'])->name('register')->middleware(('guest'));
+route::post('register', [RegisterController::class, 'store'])->name('register-store')->middleware(('guest'));
+
+// route login sesuai role
+route::get('/dashboard/admin', [Dashboard::class, 'admin'])->name('dashboard.admin')->middleware('auth', 'level:admin');
+route::get('/dashboard/petugas', [Dashboard::class, 'petugas'])->name('dashboard.petugas')->middleware('auth', 'level:petugas');
+route::get('/dashboard/masyarakat', [Dashboard::class, 'masyarakat'])->name('dashboard.masyarakat')->middleware('auth', 'level:masyarakat');
+
+// route login / error
+route::view('error/403', 'error.403')->name('error.403');
