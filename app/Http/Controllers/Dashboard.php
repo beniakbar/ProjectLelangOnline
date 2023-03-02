@@ -18,9 +18,8 @@ class Dashboard extends Controller
         $barangs = Barang::all();
         $users = User::all();
         $lelangs = Lelang::all();
-        $histories = Histories::all();
-        $histories = Histories::orderBy('harga', 'desc')->get();
-        return view('dashboard.admin', compact('histories','lelangs','barangs','users'));
+  
+        return view('dashboard.admin', compact('lelangs','barangs','users'));
     }
 
     public function petugas()
