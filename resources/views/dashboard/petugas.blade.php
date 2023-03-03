@@ -51,7 +51,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Penawaran</span>
                             <span class="info-box-number">
-                                {{ $histories->count() }}
+                                {{-- {{ $histories->count() }} --}}
                             </span>
                             <a href="/admin/users" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>

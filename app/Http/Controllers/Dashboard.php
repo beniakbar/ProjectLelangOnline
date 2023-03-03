@@ -27,9 +27,7 @@ class Dashboard extends Controller
         $barangs = Barang::all();
         $users = User::all();
         $lelangs = Lelang::all();
-        $histories = Histories::all();
-        $histories = Histories::orderBy('harga', 'desc')->get();
-        return view('dashboard.petugas', compact('histories','lelangs','barangs','users'));
+        return view('dashboard.petugas', compact('lelangs','barangs','users'));
     }
 
     public function masyarakat(lelang $lelang)

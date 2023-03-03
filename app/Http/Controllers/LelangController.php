@@ -79,7 +79,7 @@ class LelangController extends Controller
     {
         //
         $lelangs = Lelang::find($lelang->id);
-        return view('lelang.show');
+        return view('lelang.show', compact('lelangs'));
     }
 
     /**
@@ -91,6 +91,8 @@ class LelangController extends Controller
     public function edit(lelang $lelang)
     {
         //
+        $lelangs = lelang::find($lelang->id);
+        return view('lelang.edit', compact('lelangs'));
     }
 
     /**

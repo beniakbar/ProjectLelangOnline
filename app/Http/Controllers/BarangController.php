@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang;
+use App\Models\lelang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
