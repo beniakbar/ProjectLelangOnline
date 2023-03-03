@@ -11,11 +11,11 @@
         class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">
         @if (auth()->user()->level == 'petugas')
-            <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="/dashboard/petugas">{{ Auth::user()->name }}</a>
         @elseif (auth()->user()->level == 'admin')
-            <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="/dashboard/admin">{{ Auth::user()->name }}</a>
         @elseif (auth()->user()->level == 'masyarakat')
-            <a href="/profile" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="/dashboard/masyarakat">{{ Auth::user()->name }}</a>
         @endif
     </span>
     </a>

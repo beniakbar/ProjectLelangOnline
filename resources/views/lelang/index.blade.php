@@ -128,7 +128,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" style="text-align: center" class="text-danger"><strong>Data masih
+                                <td colspan="5" style="text-align: center" class="text-danger"><strong>Data Lelang
                                         kosong</strong></td>
                             </tr>
                     @endforelse

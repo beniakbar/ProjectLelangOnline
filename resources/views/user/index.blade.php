@@ -58,7 +58,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" style="text-align: center" class="text-danger"><strong> Data Barang
+                        <td colspan="5" style="text-align: center" class="text-danger"><strong> Data User
                                 Kosong</strong></td>
                     </tr>
                     @endforelse ($users as $user)

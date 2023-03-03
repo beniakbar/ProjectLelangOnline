@@ -90,7 +90,7 @@
                         <img src="{{ asset('landing/images/sale.jpeg') }}" class="custom-block-image img-fluid"
                             alt="">
 
-                        <h4><strong class="text-white">Buruan dapatkan voucher promo</strong></h4>
+                        <h4><strong class="text-white">Dapatakan Promo Sekarang Juga</strong></h4>
 
                         <a href="#featured-section" class="smoothscroll btn custom-btn custom-btn-italic mt-3">S&K</a>
                     </div>
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="col-lg-5 col-12 custom-block-bg-overlay-wrap mt-4 mt-lg-0 mb-5 mb-lg-0">
-                                <img src="{{ asset('landing/images/seller1.png') }}"
+                                <img src="{{ asset('landing/images/seller2.png') }}"
                                     class="custom-block-bg-overlay-image img-fluid" alt="">
 
                                 <div class="team-info d-flex align-items-center flex-wrap">
@@ -265,15 +265,10 @@
                                             <form action="{{ route('register-store') }}" method="POST">
                                                 @csrf
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="name" value="{{ old('name') }}"
-                                                        required autocomplete="name" autofocus
+                                                    <input type="text" name="name" required autocomplete="name"
                                                         class="form-control @error('name') is-invalid @enderror"
                                                         placeholder="Nama Lengkap">
-                                                    {{-- <div class="input-group-append">
-                                                        <div class="input-group-text">
 
-                                                        </div>
-                                                    </div> --}}
                                                     @error('name')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -282,15 +277,9 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <input type="text" name="username"
-                                                        value="{{ old('username') }}" required autocomplete="name"
-                                                        autofocus
                                                         class="form-control @error('username') is-invalid @enderror"
                                                         placeholder="Username anda">
-                                                    {{-- <div class="input-group-append">
-                                                        <div class="input-group-text">
 
-                                                        </div>
-                                                    </div> --}}
                                                     @error('username')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -299,15 +288,9 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <input type="string" name="telepon"
-                                                        value="{{ old('telepon') }}" required autocomplete="name"
-                                                        autofocus
                                                         class="form-control @error('telepon') is-invalid  @enderror"
                                                         placeholder="Nomor telepon anda">
-                                                    {{-- <div class="input-group-append">
-                                                        <div class="input-group-text">
 
-                                                        </div>
-                                                    </div> --}}
                                                     @error('telepon')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -316,14 +299,9 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <input type="password" name="password"
-                                                        value="{{ old('name') }}" required autocomplete="name"
-                                                        autofocus
                                                         class="form-control @error('password') is-invalid @enderror"
                                                         placeholder="Password anda">
-                                                    {{-- <div class="input-group-append">
-                                                        <div class="input-group-text">
 
-                                                        </div> --}}
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -522,7 +500,8 @@
                                 <div class="site-footer-thumb">
                                     <strong class="mb-1">My Friends</strong>
 
-                                    <p>Thanks to my Friends who support me create this web</p>
+                                    <p>Revaldy, Dafa, Rifki, Syawal, Arsya</p>
+
                                 </div>
                             </div>
 

@@ -47,7 +47,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-start">
-                                <a href="/barang" class="btn btn-outline-info">
+                                <a href="/user" class="btn btn-outline-info">
                                     Kembali
                                 </a>
                             </div>

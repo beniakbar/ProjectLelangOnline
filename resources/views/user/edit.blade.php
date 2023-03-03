@@ -54,7 +54,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6 d-flex justify-content-start">
-                            <a href="{{ route('lelang.index') }}" class="btn btn-outline-info me-1 mb-1">
+                            <a href="{{ route('user.index') }}" class="btn btn-outline-info me-1 mb-1">
                                 {{ __('Kembali') }}
                             </a>
                             <button type="reset" class="btn btn-light-secondary me-1 mb-1">
