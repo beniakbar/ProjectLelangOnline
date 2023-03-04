@@ -27,7 +27,7 @@ class historie extends Model
     }
     public function lelang()
     {
-        return $this->hasOne('App\Models\lelang', 'id', 'lelang_id');
+        return $this->hasOne('App\Models\lelang', 'id', 'lelang_id', 'status');
     }
     public function barang()
     {

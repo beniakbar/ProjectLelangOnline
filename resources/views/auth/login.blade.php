@@ -48,18 +48,37 @@
 
                 <form action="{{ route('login.proses') }}" method="post">
                     @csrf
+
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="username" value="{{ old('username') }}" required autocomplete="name"
+                            autofocus class="form-control @error('username') is-invalid @enderror"
+                            placeholder="Username anda">
                         <div class="input-group-append">
                             <div class="input-group-text">
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    <div class="input-group
+                            mb-3">
+                        <input type="password" name="password" value="{{ old('name') }}" required autocomplete="name"
+                            autofocus class="form-control @error('password') is-invalid @enderror"
+                            placeholder="Password anda">
                         <div class="input-group-append">
                             <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -69,9 +88,11 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register</a>
-                </p>
+                <center>
+                    <p class="mb-0">
+                        <a href="{{ route('register') }}" class="text-center">Register</a>
+                    </p>
+                </center>
             </div>
             <!-- /.card-body -->
         </div>

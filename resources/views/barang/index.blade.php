@@ -34,7 +34,8 @@
                         <td>{{ $barang->tanggal }}</td>
                         <td>@currency($barang->harga_awal)</td>
                         <td>
-                            <div class="d-flex flex-nowrap flex-column flex-md-row justify-center">
+
+                            <center>
                                 <form action="{{ route('barang.destroy', $barang->id) }}" method="POST">
                                     <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $barang->id) }}">
                                         <i class="fas fa-info"></i>
@@ -44,7 +45,6 @@
                                         <i class="fas fa-edit"></i>
                                         Edit
                                     </a>
-
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit"value="Delete">
@@ -53,7 +53,8 @@
                                         Delete
                                     </button>
                                 </form>
-                            </div>
+                            </center>
+
                         </td>
                     </tr>
                     </tr>

@@ -44,13 +44,14 @@
                             placeholder="Deskripsi barang anda"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Tambah Gambar</label>
-                        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
-                            id="image">
+                        <label for="image" class="form-label">Gambar Barang</label>
+                        <img class="img-preview img-fluid col-sm-5 mb-3" alt="">
+                        <input class="form-control @error('image')is-invalid @enderror" type="file" id="image"
+                            name="image" onchange="previewImage()">
                         @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="row">

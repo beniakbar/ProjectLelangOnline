@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\historie;
-use App\Models\lelang;
 use App\Models\barang;
+use App\Models\lelang;
+use Illuminate\Support\Facades\auth;  
 
 class HistorieController extends Controller
 {
     public function index()
     {
         //
-       
+
     }
 
     /**
@@ -20,12 +21,12 @@ class HistorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(historie $historie, Lelang $lelang)
+    public function create(historie $historie, Lelang $lelang, Barang $barang)
     {
         //
-        $lelangs = Lelang::find($lelang->id);
-        $historie = historie::orderBy('harga', 'desc')->get()->where('lelang_id',$lelang->id);
-        return view('lelang.penawaran', compact('lelangs', 'historie'));
+        $lelangs = Lelang::all();
+        $histories = Historie::all();
+        return view('lelang.penawaran', compact('lelangs', 'histories'));
     }
 
     /**
@@ -36,7 +37,26 @@ class HistorieController extends Controller
      */
     public function store(Request $request,historie $historie, Lelang $lelang, Barang $barang)
     {
-       
+        $validatedData = $request->validate([
+            'harga' => [
+                'required',
+                'numeric',
+            ],
+        ], 
+        [
+            'harga.required' => "Harga penawaran harus diisi",
+            'harga.numeric' => "Harga penawaran harus berupa angka",
+        ]);
+
+        $historie = new Historie();
+        $historie->lelang_id = $lelang->id;
+        $historie->users_id = Auth::user()->id;
+        $histories->barang_id = $lelang->barang->id;
+        $historie->harga = $request->harga_penawaran;
+        $historie->status = 'pending';
+        $historie->save();
+
+        return redirect()->route('lelang.penawaran', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini')->with('ucapan','');
     }
 
 

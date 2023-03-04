@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('judul')
-    <h1>Halaman lelang</h1>
+    <h1>Data lelang</h1>
 @endsection
 
 @section('content')
@@ -48,14 +48,7 @@
                 @else
                 @endif
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+
             </div>
             <div class="card-body p-0">
                 <table class="table table-hover">
@@ -103,25 +96,28 @@
                                 @endif
                                 @if (auth()->user()->level == 'petugas')
                                     <td>
-                                        <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
-                                            <a class="btn btn-primary btn-sm" href="{{ route('lelang.show', $item->id) }}">
-                                                <i class="fas fa-info"></i>
-                                                Detail
-                                            </a>
-                                            <a class="btn btn-info btn-sm"
-                                                href="{{ route('barang.edit', $item->barangs_id) }}">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <center>
+                                            <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="{{ route('lelang.show', $item->id) }}">
+                                                    <i class="fas fa-info"></i>
+                                                    Detail
+                                                </a>
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('barang.edit', $item->barangs_id) }}">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </center>
                                     </td>
                                 @else
                                 @endif
