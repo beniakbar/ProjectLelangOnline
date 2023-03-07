@@ -45,12 +45,7 @@
                     <div class="col-md-7">
                         <div class="card">
                             <div class="card-header">
-                                <ul class="nav nav-tabs card-header-tabs">
-                                    <li class="nav-item"><a class="nav-link active" href="#details"
-                                            data-toggle="tab">Detail</a></li>
-                                    <li hidden class="nav-item"><a class="nav-link" href="#bid"
-                                            data-toggle="tab">Tawar</a></li>
-                                </ul>
+
                             </div><!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
@@ -203,7 +198,7 @@
                                                                         </div>
                                                                         <input type="text" name="harga"
                                                                             class="form-control @error('harga') is-invalid @enderror"
-                                                                            placeholder="Masukan Harga harus lebih dari @currency($lelangs[0]->barang->harga_awal)">
+                                                                            placeholder="Masukan Penawaran">
                                                                         @error('harga')
                                                                             <div class="invalid-feedback">
                                                                                 <b>{{ $message }}</b>

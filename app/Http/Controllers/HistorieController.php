@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\historie;
 use App\Models\barang;
 use App\Models\lelang;
+use App\Models\user;
 use Illuminate\Support\Facades\auth;  
 
 class HistorieController extends Controller
@@ -48,15 +49,15 @@ class HistorieController extends Controller
             'harga.numeric' => "Harga penawaran harus berupa angka",
         ]);
 
+        //  dd($barang);
         $historie = new Historie();
         $historie->lelang_id = $lelang->id;
+        $historie->barang_id = $lelang->barang->id;
+        $historie->harga = $request->harga;
         $historie->users_id = Auth::user()->id;
-        $histories->barang_id = $lelang->barang->id;
-        $historie->harga = $request->harga_penawaran;
         $historie->status = 'pending';
         $historie->save();
-
-        return redirect()->route('lelang.penawaran', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini')->with('ucapan','');
+        return redirect()->route('historie.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini');
     }
 
 

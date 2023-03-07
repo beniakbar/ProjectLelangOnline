@@ -52,21 +52,9 @@ class BarangController extends Controller
             $permintaan['image'] = $request->file('image')->store('post-images');
         }
 
-        // $image = time() . '.' . $request->image->extension();
-
-        // $request->image->move(public_path('images'), $image);
-
-        // barang::create([
-        //     'nama_barang' => $request->nama_barang,
-        //     'tanggal' => $request->tanggal,
-        //     'harga_awal' => $request->harga_awal,
-        //     'deskripsi_barang' => $request->deskripsi_barang,
-        //     'image' => $image
-        // ]);
-
         barang::create($permintaan);
 
-        return redirect('/barang');
+        return redirect('/barang')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
 
     /**
@@ -119,7 +107,7 @@ class BarangController extends Controller
         $barangs->deskripsi_barang = $request->deskripsi_barang;
         $barangs->update();
 
-        return redirect('/barang');
+        return redirect('/barang')->with('edit', 'Data Barang Berhasil Diedit');
     }
 
     /**
@@ -133,6 +121,6 @@ class BarangController extends Controller
         //
         $barangs = barang::find($barang->id);
         $barangs->delete();
-        return redirect('barang');
+        return redirect('barang')->with('Delete', 'Data Barang Berhasil dihapus');
     }
 }

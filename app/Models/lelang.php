@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\barang;
-use App\Models\histories;
+use App\Models\historie;
+use App\Models\User;
 
 class lelang extends Model
 {
@@ -23,8 +24,12 @@ class lelang extends Model
     {
         return $this->hasOne('App\Models\Barang', 'id', 'barangs_id');
     }
-    public function histories()
+    public function historie()
     {
-        return $this->belongsTo(histories::class);
+        return $this->belongsTo(historie::class);
+    }
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'users_id');
     }
 }

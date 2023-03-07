@@ -103,12 +103,7 @@
                                                     <i class="fas fa-info"></i>
                                                     Detail
                                                 </a>
-                                                <a class="btn btn-info btn-sm"
-                                                    href="{{ route('barang.edit', $item->barangs_id) }}">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    Edit
-                                                </a>
+                                               
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm" type="submit"value="Delete">

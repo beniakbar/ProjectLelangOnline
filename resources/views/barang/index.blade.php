@@ -36,23 +36,32 @@
                         <td>
 
                             <center>
-                                <form action="{{ route('barang.destroy', $barang->id) }}" method="POST">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $barang->id) }}">
-                                        <i class="fas fa-info"></i>
-                                        Detail
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $barang->id) }}">
-                                        <i class="fas fa-edit"></i>
-                                        Edit
-                                    </a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" type="submit"value="Delete">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </button>
-                                </form>
+                                @if (auth()->user()->level === 'admin')
+                                    <form action="{{ route('barang.destroy', $barang->id) }}" method="POST">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $barang->id) }}">
+                                            <i class="fas fa-info"></i>
+                                            Detail
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="{{ route('barang.edit', $barang->id) }}">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit"value="Delete">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </button>
+                                    </form>
+                                @endif
+                                @if (auth()->user()->level === 'petugas')
+                                    <form action="{{ route('barang.destroy', $barang->id) }}" method="POST">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('barang.show', $barang->id) }}">
+                                            <i class="fas fa-info"></i>
+                                            Detail
+                                        </a>
+                                @endif
                             </center>
 
                         </td>

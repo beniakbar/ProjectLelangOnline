@@ -31,6 +31,6 @@ class historie extends Model
     }
     public function barang()
     {
-        return $this->hasOne('App\Models\barang', 'id', 'barangs_id');
+        return $this->belongsTo(Barang::class);
     }
 }

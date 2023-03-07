@@ -26,7 +26,7 @@
 
                             <h5 class="text-muted text-center">@currency($item->barang->harga_awal)</h5>
 
-                            <a href="{{ route('historie.create', $item->id) }}"
+                            <a href="{{ route('historie.store', $item->id) }}"
                                 class="btn btn-success btn-block"><b>Tawar</b></a>
                         </div>
                         <!-- /.card-body -->
