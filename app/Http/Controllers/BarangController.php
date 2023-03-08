@@ -57,6 +57,8 @@ class BarangController extends Controller
         return redirect('/barang')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
 
+    
+
     /**
      * Display the specified resource.
      *

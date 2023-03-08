@@ -103,7 +103,7 @@
                                                     <i class="fas fa-info"></i>
                                                     Detail
                                                 </a>
-                                               
+
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm" type="submit"value="Delete">

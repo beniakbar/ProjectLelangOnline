@@ -22,12 +22,12 @@ class HistorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(historie $historie, Lelang $lelang, Barang $barang)
+    public function create(historie $historie, lelang $lelang, Barang $barang)
     {
         //
-        $lelangs = Lelang::all();
-        $histories = Historie::all();
-        return view('lelang.penawaran', compact('lelangs', 'histories'));
+        $lelang = lelang::find($lelang->id);
+        $histories = Historie::orderBy('harga', 'desc')->get()->where('lelang_id', $lelang->id);
+        return view('lelang.penawaran', compact('lelang', 'histories'));
     }
 
     /**
@@ -58,6 +58,27 @@ class HistorieController extends Controller
         $historie->status = 'pending';
         $historie->save();
         return redirect()->route('historie.create', $lelang->id)->with('success', 'Anda Berhasil Menawar Barang Ini');
+    }
+
+    public function setPemenang(Lelang $lelang, $id)
+    {
+    // Mengambil data history lelang berdasarkan id
+    $historie = historie::findOrFail($id);
+
+    // Mengubah status pada history lelang menjadi 'pemenang'
+    $historie->status = 'pemenang';
+    $historie->save();
+
+    // Mengambil data lelang berdasarkan history lelang
+    $lelang = $historie->lelang;
+
+    // Mengubah status pada lelang menjadi 'ditutup'
+    $lelang->status = 'ditutup';
+    $lelang->pemenang = $historie->user->name;
+    $lelang->harga_akhir = $historie->harga;
+    $lelang->save();
+
+    return redirect()->back()->with('success', 'Pemenang berhasil dipilih!');
     }
 
 

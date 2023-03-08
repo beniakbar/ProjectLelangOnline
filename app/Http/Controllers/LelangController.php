@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\lelang;
 use App\Models\barang;
+use App\Models\historie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class LelangController extends Controller
     public function index()
     {
         //
-        $lelangs = lelang::all();
+        $lelangs = lelang::orderBy('created_at','desc')->get();
         return view('lelang.index', compact('lelangs'));
     }
 
@@ -79,7 +80,8 @@ class LelangController extends Controller
     {
         //
         $lelangs = Lelang::find($lelang->id);
-        return view('lelang.show', compact('lelangs'));
+        $histories = Historie::orderBy('harga', 'desc')->get()->where('lelang_id', $lelang->id);
+        return view('lelang.show', compact('lelangs', 'histories'));
     }
 
     /**
