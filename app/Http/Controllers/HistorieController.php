@@ -49,7 +49,7 @@ class HistorieController extends Controller
             'harga.numeric' => "Harga penawaran harus berupa angka",
         ]);
 
-        //  dd($barang);
+        //  dd($historie);
         $historie = new Historie();
         $historie->lelang_id = $lelang->id;
         $historie->barang_id = $lelang->barang->id;
@@ -63,7 +63,7 @@ class HistorieController extends Controller
     public function setPemenang(Lelang $lelang, $id)
     {
     // Mengambil data history lelang berdasarkan id
-    $historie = historie::findOrFail($id);
+    $historie = historie::find($id);
 
     // Mengubah status pada history lelang menjadi 'pemenang'
     $historie->status = 'pemenang';

@@ -97,7 +97,7 @@
                                 @if (auth()->user()->level == 'petugas')
                                     <td>
                                         <center>
-                                            <form action="{{ route('barang.destroy', [$item->id]) }}"method="POST">
+                                            <form action="{{ route('lelang.destroy', [$item->id]) }}"method="POST">
                                                 <a class="btn btn-primary btn-sm"
                                                     href="{{ route('lelang.show', $item->id) }}">
                                                     <i class="fas fa-info"></i>
