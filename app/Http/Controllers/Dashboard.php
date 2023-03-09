@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\lelang;
 use App\Models\barang;
 use App\Models\user;
-use App\Models\histories;
+use App\Models\historie;
 
 
 class Dashboard extends Controller
@@ -17,17 +17,18 @@ class Dashboard extends Controller
     {
         $barangs = Barang::all();
         $users = User::all();
+        $historie = historie::all();
         $lelangs = Lelang::all();
   
-        return view('dashboard.admin', compact('lelangs','barangs','users'));
+        return view('dashboard.admin', compact('lelangs','barangs','users','historie'));
     }
 
     public function petugas()
     {
         $barangs = Barang::all();
-        $users = User::all();
         $lelangs = Lelang::all();
-        return view('dashboard.petugas', compact('lelangs','barangs','users'));
+        $historie = historie::all();
+        return view('dashboard.petugas', compact('lelangs','barangs','historie'));
     }
 
     public function masyarakat(lelang $lelang)

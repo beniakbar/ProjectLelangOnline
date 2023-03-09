@@ -38,7 +38,7 @@
                             <span class="info-box-number">
                                 {{ $barangs->count() }}
                             </span>
-                            <a href="/admin/barang" class="small-box-footer"><i class="fas fa-info-circle">Detail</i></a>
+                            <a href="/barang" class="small-box-footer"><i class="fas fa-info-circle">Detail</i></a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -52,7 +52,7 @@
                             <span class="info-box-number">
                                 {{ $lelangs->count() }}
                             </span>
-                            <a href="admin/lelang" class="small-box-footer"><i class="fas fa-info-circle">Detail</i></a>
+                            <a href="/lelang" class="small-box-footer"><i class="fas fa-info-circle">Detail</i></a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -64,9 +64,8 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Penawaran</span>
                             <span class="info-box-number">
-                                {{-- {{ $totalpenawaran }} --}}
-                            </span>
-                            <a href="/admin/users" class="small-box-footer"><i class="fas fa-info-circle">Detail</i></a>
+                                {{ $historie->count() }}
+
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -101,7 +100,7 @@
                         </tr>
                     </tbody>
                     </thead>
-                    {{-- @forelse ($historyLelangs as $item)
+                    @forelse ($historie as $item)
                         <tbody>
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -118,7 +117,7 @@
                             <tr>
                                 <td>Data masih kosong</td>
                             </tr>
-                    @endforelse --}}
+                    @endforelse
                     </tbody>
                 </table>
             </div>

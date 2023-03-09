@@ -45,13 +45,15 @@
             <div class="card-header">
                 @if (auth()->user()->level == 'petugas')
                     <a class="btn btn-primary mb-3"href="/lelang/create">Tambah lelang</a>
+                @else
+                @endif
+                @if (auth()->check() && (auth()->user()->level == 'petugas' || auth()->user()->level == 'admin'))
                     <a class="btn btn-info mb-3" target="_blank" href="{{ route('cetak.lelang') }}">
                         <li class="fas fa fa-print"></li>
                         Cetak Data
                     </a>
                 @else
                 @endif
-
             </div>
             <div class="card-body p-0">
                 <table class="table table-hover">

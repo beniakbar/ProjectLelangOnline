@@ -23,7 +23,7 @@
                             <span class="info-box-number">
                                 {{ $barangs->count() }}
                             </span>
-                            <a href="/admin/barang" class="small-box-footer">More info <i
+                            <a href="/barang" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                         <!-- /.info-box-content -->
@@ -38,7 +38,7 @@
                             <span class="info-box-number">
                                 {{ $lelangs->count() }}
                             </span>
-                            <a href="/admin/lelang" class="small-box-footer">More info <i
+                            <a href="/lelang" class="small-box-footer">More info <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                         <!-- /.info-box-content -->
@@ -51,10 +51,9 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Penawaran</span>
                             <span class="info-box-number">
-                                {{-- {{ $histories->count() }} --}}
+                                {{ $historie->count() }}
                             </span>
-                            <a href="/admin/users" class="small-box-footer">More info <i
-                                    class="fas fa-arrow-circle-right"></i></a>
+
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -89,7 +88,7 @@
                         </tr>
                     </tbody>
                     </thead>
-                    {{-- @forelse ($historyLelangs as $item)
+                    @forelse ($historie as $item)
                         <tbody>
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -106,7 +105,7 @@
                             <tr>
                                 <td>Data masih kosong</td>
                             </tr>
-                    @endforelse --}}
+                    @endforelse
                     </tbody>
                 </table>
             </div>
