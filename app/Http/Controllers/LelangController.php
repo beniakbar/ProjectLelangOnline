@@ -7,6 +7,7 @@ use App\Models\barang;
 use App\Models\historie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LelangController extends Controller
 {
@@ -22,6 +23,14 @@ class LelangController extends Controller
         return view('lelang.index', compact('lelangs'));
     }
 
+    public function cetaklelang()
+    {
+        //
+        $cetaklelangs = Lelang::all();
+        $now = Carbon::now();
+        return view('lelang.cetaklelang', compact('cetaklelangs', 'now'));
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -78,12 +87,11 @@ class LelangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(lelang $lelang)
-    {
-        //
-        $lelangs = Lelang::find($lelang->id);
-        $histories = Historie::orderBy('harga', 'desc')->get()->where('lelang_id', $lelang->id);
-        return view('lelang.show', compact('lelangs', 'histories'));
-    }
+{
+    $lelangs = Lelang::find($lelang->id);
+    $historie = Historie::where('lelang_id', $lelang->id)->get();
+    return view('lelang.show', compact('lelangs', 'historie'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -116,11 +124,12 @@ class LelangController extends Controller
      * @param  \App\Models\lelang  $lelang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lelang $lelang)
+    public function destroy(lelang $lelang, historie $historie)
     {
         //
         $lelangs = lelang::find($lelang->id);
         $lelangs->delete();
+        $historie = historie::find($historie->harga);
         return redirect('lelang');
     }
 }

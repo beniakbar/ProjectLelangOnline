@@ -76,6 +76,12 @@ class HistorieController extends Controller
     $lelang->status = 'ditutup';
     $lelang->pemenang = $historie->user->name;
     $lelang->harga_akhir = $historie->harga;
+
+    $histories = historie::where('lelang_id', $historie->lelang_id)
+    ->where('status', 'pending')
+    ->where('id', '<>', $historie->id)
+    ->update(['status' => 'gugur']);
+
     $lelang->save();
 
     return redirect()->back()->with('success', 'Pemenang berhasil dipilih!');

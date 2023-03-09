@@ -8,6 +8,7 @@ use App\Http\Controllers\LelangController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\Historiecontroller;
+use App\Http\Controllers\ReportController;
 
 
 Route::get('/', function () {
@@ -47,13 +48,14 @@ route::view('error/403', 'error.403')->name('error.403');
 
 Route::controller(BarangController::class)->group(function() {
     // ROUTE BARANG
-    Route::get('barang', 'index')->name('barang.index')->middleware('auth', 'level:admin, petugas');
+    Route::get('barang', 'index')->name('barang.index')->middleware('auth', 'level:admin,petugas');
     Route::get('barang/create', 'create')->name('barang.create')->middleware('auth','level:admin');
     Route::post('barang', 'store')->name('barang.store')->middleware('auth','level:admin');
-    Route::get('barang/{barang}', 'show')->name('barang.show')->middleware('auth','level:admin, petugas');
+    Route::get('barang/{barang}', 'show')->name('barang.show')->middleware('auth','level:admin,petugas');
     Route::get('barang/{barang}/edit', 'edit')->name('barang.edit')->middleware('auth','level:admin');
     Route::put('barang/{barang}', 'update')->name('barang.update')->middleware('auth','level:admin');
     Route::delete('barang/{barang}', 'destroy')->name('barang.destroy')->middleware('auth','level:admin');
+    Route::get('cetak-barang', 'cetakbarang')->name('cetak.barang')->middleware('auth','level:admin,petugas');
         });
 
 // LELANG C0I RILL ASLI CAPRUK NO FEK FEK
@@ -69,6 +71,7 @@ route::middleware(['auth', 'level:petugas'])->group(function () {
 Route::controller(lelangController::class)->group(function() {
     // ROUTE lelang
 Route::delete('lelang/{lelang}', 'destroy')->name('lelang.destroy')->middleware('auth','level:petugas');
+Route::get('/cetak-lelang', 'cetaklelang')->name('cetak.lelang')->middleware('auth','level:admin,petugas');
         });
 
 route::middleware('auth', 'level:admin,petugas,masyarakat')->group(function () {
@@ -95,4 +98,5 @@ Route::controller(HistorieController::class)->group(function() {
     Route::get('/penawaran/{lelang}', 'create')->name('historie.create')->middleware('auth','level:masyarakat');
     Route::post('/penawaran/{lelang}', 'store')->name('historie.store')->middleware('auth','level:masyarakat');   
     Route::put('/lelang/{id}/status', 'setPemenang')->name('historie.setPemenang');
-     });
+});
+

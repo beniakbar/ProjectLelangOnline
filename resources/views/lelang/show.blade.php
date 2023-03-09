@@ -7,102 +7,109 @@
 
     <section class="content">
         <div class="container-fluid">
+            <div class="card">
 
-            @if (!empty($lelangs))
-                <div class="row">
-                    <div class="col-md-5">
-                        <!-- Profile Image -->
-                        <div class="card card-primary card-outline">
-                            <div class="card-body box-profile">
-                                <div class="text-center">
-                                    @if ($lelangs->barang->image)
-                                        <img class="img-fluid mt-3" src="{{ asset('storage/' . $lelangs->barang->image) }}"
-                                            alt="User profile picture">
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /.col -->
-                    <div class="col-md-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="details">
-                                        <form class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="inputName">Nama Barang</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="inputName"
-                                                        value="{{ $lelangs->barang->nama_barang }}"disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail">Harga Awal</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="inputEmail"
-                                                            value="@currency($lelangs->barang->harga_awal)"disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail">Harga akhir</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="inputEmail"
-                                                            value="@currency($lelangs->harga_akhir)"disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-9">
-                                                    <label for="inputName2">Tanggal Lelang</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="inputName2"
-                                                            value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y') }}"
-                                                            disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="inputEmail">Status</label>
-                                                    <div class="col-sm-12">
-                                                        <input type="text" class="form-control" id="inputEmail"
-                                                            value="{{ $lelangs->status }}"disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail">Pemenang Lelang</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="inputEmail"
-                                                        value="{{ $lelangs->pemenang }}"disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputExperience">Deskripsi Barang</label>
-                                                <div class="col-sm-12">
-                                                    <textarea class="form-control" id="inputExperience" disabled>{{ $lelangs->barang->deskripsi_barang }}</textarea>
-                                                </div>
-                                            </div>
-                                            @if (auth()->user()->level == 'admin')
-                                                <a href="{{ route('lelang.index') }}"
-                                                    class="btn btn-outline-info">Kembali</a>
-                                            @elseif(auth()->user()->level == 'masyarakat')
-                                                <a href="{{ route('dashboard.masyarakat') }}"
-                                                    class="btn btn-outline-info">Kembali</a>
-                                            @elseif(auth()->user()->level == 'petugas')
-                                                <a href="{{ route('lelang.index') }}"
-                                                    class="btn btn-outline-info">Kembali</a>
-                                            @endif
-                                        </form>
+                @if (!empty($lelangs))
+                    <div class="row">
+                        <div class="col-md-5">
+                            <!-- Profile Image -->
+                            <div class="card card-primary card-outline">
+                                <div class="card-body box-profile">
+                                    <div class="text-center">
+                                        @if ($lelangs->barang->image)
+                                            <img class="img-fluid mt-3"
+                                                src="{{ asset('storage/' . $lelangs->barang->image) }}"
+                                                alt="User profile picture">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            @endif
-        </div>
-        @if (auth()->user()->level == 'petugas')
+
+                        <!-- /.col -->
+                        <div class="col-md-7">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="details">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label for="inputName">Nama Barang</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" id="inputName"
+                                                            value="{{ $lelangs->barang->nama_barang }}"disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail">Harga Awal</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="inputEmail"
+                                                                value="@currency($lelangs->barang->harga_awal)"disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail">Harga akhir</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="inputEmail"
+                                                                value="@currency($lelangs->harga_akhir)"disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-9">
+                                                        <label for="inputName2">Tanggal Lelang</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="inputName2"
+                                                                value="{{ \Carbon\Carbon::parse($lelangs->tanggal_lelang)->format('j F Y') }}"
+                                                                disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="inputEmail">Status</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="inputEmail"
+                                                                value="{{ $lelangs->status }}"disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail">Pemenang Lelang</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" id="inputEmail"
+                                                            value="{{ $lelangs->pemenang }}"disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputExperience">Deskripsi Barang</label>
+                                                    <div class="col-sm-12">
+                                                        <textarea class="form-control" id="inputExperience" disabled>{{ $lelangs->barang->deskripsi_barang }}</textarea>
+                                                    </div>
+                                                </div>
+                                                @if (auth()->user()->level == 'admin')
+                                                    <a href="{{ route('lelang.index') }}"
+                                                        class="btn btn-outline-info">Kembali</a>
+                                                @elseif(auth()->user()->level == 'masyarakat')
+                                                    <a href="{{ route('dashboard.masyarakat') }}"
+                                                        class="btn btn-outline-info">Kembali</a>
+                                                @elseif(auth()->user()->level == 'petugas')
+                                                    <a href="{{ route('lelang.index') }}"
+                                                        class="btn btn-outline-info">Kembali</a>
+                                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                                        data-target="#modal-success">
+                                                        KONFIRMASI PEMENANG
+                                                    </button>
+                                                @endif
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                @endif
+            </div>
+
             <div class="card">
                 <div class="card-header">
                     <strong>Histori Pelelang {{ $lelangs->barang->nama_barang }}</strong>
@@ -135,7 +142,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($histories as $item)
+                                @forelse ($historie as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->user->name }}</td>
@@ -143,24 +150,14 @@
                                         <td>@currency($item->harga)</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('j-F-Y') }}</td>
                                         <td>
-                                            <span
-                                                class="badge {{ $item->status == 'pending' ? 'bg-warning' : 'bg-success' }}">{{ Str::title($item->status) }}</span>
+                                        <td><span
+                                                class="badge text-white {{ $item->status == 'pending' ? 'bg-warning' : ($item->status == 'gugur' ? 'bg-danger' : 'bg-success') }}">{{ Str::title($item->status) }}</span>
                                         </td>
-                                        @if (auth()->user()->level == 'admin')
-                                            <td>
-                                                <a class="btn btn-primary btn-sm"
-                                                    href="{{ route('lelang.show', $item->id) }}">
-                                                    <i class="fas fa-folder"></i>
-                                                    View
-                                                </a>
-                                            </td>
-                                        @elseif(auth()->user()->level == 'petugas')
+
+                                        @if (auth()->user()->level == 'petugas' && $lelangs->status == 'dibuka')
                                             <td>
                                                 <div class="card-body">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                                        data-target="#modal-success">
-                                                        Jadikan Pemenang
-                                                    </button>
+
                                                     <div class="modal fade" id="modal-success">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -172,7 +169,8 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>ANDA YAKIN UNTUK MENJADIKAN
+                                                                    <p>PEMENANG OTOMATIS DIPILIH YANG MELAKUKAN BID
+                                                                        TERBESAR, APAKAH ANDA YAKIN MENJADIKAN
                                                                         "{{ $item->user->name }}" PEMENANG?
                                                                     </p>
                                                                 </div>
@@ -190,13 +188,16 @@
                                                                 </div>
                                                             </div>
                                             </td>
+                                        @elseif($lelangs->status == 'ditutup')
                                         @endif
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" style="text-align: center" class="text-danger"><strong>Data
+                                        <td colspan="6" style="text-align: center" class="text-danger">
+                                            <strong>Data
                                                 masih
-                                                kosong</strong></td>
+                                                kosong</strong>
+                                        </td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -204,6 +205,6 @@
                     </div>
                 </div>
             </div>
-        @endif
+
     </section>
 @endsection

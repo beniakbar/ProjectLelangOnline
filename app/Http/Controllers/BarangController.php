@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\barang;
 use App\Models\lelang;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BarangController extends Controller
 {
@@ -18,6 +19,14 @@ class BarangController extends Controller
         //
         $barangs = barang::all();
         return view('barang.index', compact('barangs'));
+    }
+    public function cetakbarang()
+    {
+        //
+        $cetakbarangs = barang::all();
+        $now = Carbon::now();
+        return view('barang.cetakbarang', compact('cetakbarangs', 'now'));
+        
     }
 
     /**

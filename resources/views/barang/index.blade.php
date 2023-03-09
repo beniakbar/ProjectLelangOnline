@@ -7,6 +7,13 @@
 @section('content')
     <div class="card">
         <div class="card-header d-flex justify-content-between mb-3">
+            @if (auth()->user()->level == 'petugas')
+                <a class="btn btn-info mb-3" target="_blank" href="{{ route('cetak.barang') }}">
+                    <li class="fas fa fa-print"></li>
+                    Cetak Data
+                </a>
+            @else
+            @endif
             @if (auth()->user()->level === 'admin')
                 <a href="/barang/create" class="btn btn-primary">Tambah Barang</a>
             @endif
